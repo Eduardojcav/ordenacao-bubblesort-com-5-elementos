@@ -22,9 +22,9 @@ def bubble_sort(arr):
     return arr, comparisons, swaps
 
 def calculate_complexities(n):
-    best_case = n - 1  # Array já ordenado
-    worst_case = n * (n - 1) / 2  # Array em ordem inversa
-    average_case = n * (n - 1) / 4  # Caso médio
+    best_case = n - 1 
+    worst_case = n * (n - 1) / 2
+    average_case = n * (n - 1) / 4 
     return best_case, worst_case, average_case
 
 def generate_random_elements(size):
@@ -64,7 +64,7 @@ def print_complexity_analysis(n, comparisons):
     print(f"\nRESULTADO DESTE TESTE:")
     print(f"Comparações realizadas: {comparisons}")
     
-    if comparisons <= best + 1:  # Margem de erro pequena
+    if comparisons <= best + 1:  
         print("Classificação: MELHOR CASO (O(n))")
     elif comparisons >= worst - 1:
         print("Classificação: PIOR CASO (O(n²))")
@@ -73,29 +73,24 @@ def print_complexity_analysis(n, comparisons):
     print("═"*50)
 
 def main():
-    # Configuração
-    n = 5  # Número de elementos para ordenar
     
-    # Gerar elementos aleatórios
+    n = 5  
+    
     data = generate_random_elements(n)
     print("Array original:", data)
     
-    # Ordenar e medir operações
     start_time = time.time()
     sorted_data, comparisons, swaps = bubble_sort(data.copy())
     end_time = time.time()
     
-    # Resultados
     print("\nRESULTADOS DA ORDENAÇÃO:")
     print("Array ordenado:", sorted_data)
     print(f"Comparações: {comparisons}")
     print(f"Trocas: {swaps}")
     print(f"Tempo de execução: {(end_time - start_time) * 1000:.4f} ms")
     
-    # Análise detalhada de complexidade
     print_complexity_analysis(len(data), comparisons)
     
-    # Gerar gráfico de complexidade
     sizes = list(range(1, 11))
     actual_ops_list = []
     theoretical_ops_list = []
@@ -106,7 +101,6 @@ def main():
         actual_ops_list.append(comps)
         theoretical_ops_list.append(size * (size - 1) / 2)
     
-    # Plotar resultados
     plot_results(sizes, actual_ops_list, theoretical_ops_list)
 
 if __name__ == "__main__":
